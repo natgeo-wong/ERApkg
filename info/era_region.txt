@@ -1,0 +1,18 @@
+#(0)ID (1)RegID (2)N (3)W (4)S (5)E (6)Description
+dwn,GLB,90,0,-90,359.75,Global (ERA5 default)
+dwn,SEA,20,90,-15,165,Southeast Asia / Maritime Continent
+dwn,IND,35,60,-15,100,Indian Subcontinent / Indian Ocean
+ana,MLD_SEA,20,93,0,110,Mainland Southeast Asia
+ana,SGP_SEA,3,101.5,0,106,Singapore / Johor
+ana,SMT_SEA,6,95,-6,107,Sumatra
+ana,JAV_SEA,-5,104,-10,116,Java
+ana,BRN_SEA,8,108,-5,120,Borneo
+ana,MLY_SEA,8,99,0,105,Peninsular Malaysia
+ana,PHI_SEA,5,117,19,127,Philippines
+ana,IDC_SEA,20,102,7,110,Indochina
+ana,PNG_SEA,0,130,-11,154,Papua New Guinea
+ana,NPL_IND,31,79,26,89,Nepal
+ana,BGD_IND,27,87,20,93,Bangladesh
+ana,MYN_IND,29,90,9,103,Myanmar / Burma
+ana,SUB_IND,35,60,5,100,Indian Subcontinent
+ana,BOB_IND,25,80,5,95,Bay of Bengal

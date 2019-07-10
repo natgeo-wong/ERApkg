@@ -1,0 +1,15 @@
+#                                 ERAPKG
+#                         NATHANAEL WONG ZHIXIN
+#
+# Welcome to ERApkg, a MATLAB package specifically designed to download and
+# analyse ERA reanalysis data.  This package is meant to automate the
+# process of downloading, resort and display specific ERA5 datasets, and
+# can be customized to include other reanalysis datasets that were not
+# utilized by the creator.
+#
+# ERApkg requires certain MATLAB toolboxes, as listed below:
+# - M_Map (see https://www.eoas.ubc.ca/~rich/map.html)
+# - Statistics and Machine Learning Toolbox (MATLAB)
+# - Image Processing Toolbox (MATLAB)
+# - Financial Instruments Toolbox (MATLAB)
+# - Parallel Computing Toolbox (MATLAB) | Optional
