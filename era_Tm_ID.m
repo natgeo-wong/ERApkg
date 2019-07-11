@@ -6,8 +6,8 @@ disp('ERApkg supports the creation of PI by various methods:');
 disp('1) Tm given by Davis et al. [1985]');
 disp('2) Tm given by Bevis et al. [1992], (a,b) given by Bevis et al. [1992]');
 disp('3) Tm given by Bevis et al. [1992], (a,b) given by Manandhar et al. [2017]');
-disp('4) Tm given by GGOS Atmosphere model (B?ohm & Schuh, 2013)');
-disp('5) Tm given by GPT2w model (B?ohm et al., 2015)');
+disp('4) Tm given by GGOS Atmosphere model (Bohm & Schuh, 2013)');
+disp('5) Tm given by GPT2w model (Bohm et al., 2015)');
 disp('6) Tm given by GTm-III model (Yao et al., 2014)');
 
 disp('Please choose the method to find PI:');
