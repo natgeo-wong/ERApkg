@@ -22,6 +22,7 @@ try    z = mean(ncread(fzsfc,'z_sfc'),3,'omitnan');
 catch, z = mean(ncread(fzsfc,'z'),3,'omitnan');
 end
 
+if isempty(gcp('nocreate')), pobj = parpool(31); end
 for yr = tvec(1) : tvec(2)
     
     pname = [ era '-' reg.ID '-' par.ID '_G2-sfc-' num2str(yr) '.nc' ];
@@ -39,6 +40,7 @@ for yr = tvec(1) : tvec(2)
               reg.ID,yr,sum(t),t(1),t(2));
     
 end
+delete(pobj);
 
 save('info_par.mat','mod','par','root');
 movefile('info_par.mat',fol.PI);
