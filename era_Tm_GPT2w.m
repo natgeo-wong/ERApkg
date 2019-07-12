@@ -1,4 +1,4 @@
-function fol = era_Tm_GPT2w (mod,par,reg,tvec,root)
+function fol = era_Tm_GPT2w (mod,par,reg,tvec,root,ini)
 
 
 
@@ -14,7 +14,7 @@ fprintf('\n');
 
 lon = reg.lon; lat = reg.lat; [ mlat,mlon ] = meshgrid(lat,lon);
 
-[ ~,zpar,~,~ ] = era_initialize(ini,1,3,0);
+[ ~,zpar,~,~ ] = era_initialize(ini,1,7,0);
 fol.zbase = [ root.era '/' reg.ID '/' zpar.ID '/raw' ];
 cd(fol.zbase); fzsfc = dir('*.nc'); fzsfc = [ fol.zbase fzsfc(1).name ];
 
