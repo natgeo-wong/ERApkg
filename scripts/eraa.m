@@ -28,12 +28,17 @@ for ii = 1 : length(pvec), par.pre = pvec(ii); dreg = [];
     cd(fol.reg); load('info_reg.mat');
     
     if (mod.ID == 5 && strcmp(par.ID,'PI')) || ...
-        (mod.ID == 5 && strcmp(par.ID,'t_mwv')), ID = era_PI_ID(2);
-        rmdir(fol.var,'s');
+        (mod.ID == 5 && strcmp(par.ID,'t_mwv')),rmdir(fol.var,'s');
+    
+        if     strcmp(par.ID,'PI'),    ID = era_PI_ID;
+        elseif strcmp(par.ID,'t_mvw'), ID = era_Tm_ID;
+        end
+        
         fol.var = strrep(fol.var,par.ID,[ par.ID '_' ID.type ]);
         fol.raw = strrep(fol.raw,par.ID,[ par.ID '_' ID.type ]);
         fol.ana = strrep(fol.ana,par.ID,[ par.ID '_' ID.type ]);
         fol.img = strrep(fol.img,par.ID,[ par.ID '_' ID.type ]);
+        
     end
     
     cd(fol.raw); fnc = dir('*.nc'); lnc = length(fnc);
