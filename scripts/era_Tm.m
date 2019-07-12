@@ -12,6 +12,7 @@
 
 clear all; [ ini,root,logf ] = era_startup(2,2);
 [ mod,par,tvec,reg ] = era_initialize(ini,5,3,1);
+ID = 4;
 
 fprintf('Proceeding to run Tm script ...\n\n');
 
