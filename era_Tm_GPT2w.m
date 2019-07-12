@@ -24,9 +24,7 @@ end
 if isempty(gcp('nocreate')), pobj = parpool(31); end
 for yr = tvec(1) : tvec(2)
     
-    if mod.stp.ID == 1, era = 'era5'; nhr = 24 * ndy;
-    else,               era = 'erai'; nhr = 4  * ndy;
-    end
+    if mod.stp.ID == 1, era = 'era5'; else, era = 'erai'; end
     pname = [ era '-' reg.ID '-' par.ID '_G2-sfc-' num2str(yr) '.nc' ];
     
     tic; Tm = era_calc_Tm_GPT2w(mod,mlon,mlat,z,yr);  t(1) = toc;
