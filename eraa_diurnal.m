@@ -1,9 +1,9 @@
-function dhr = eraa_diurnal (data,mod,reg,jj)
+function dhr = eraa_diurnal (data,mod,reg,yrjj)
 
 % script calculates the year,month and seasonal stats for each individual
 % time in the day
 
-nlon = reg.size(1); nlat = reg.size(2); yrjj = jj + 1978;
+nlon = reg.size(1); nlat = reg.size(2);
 
 if mod.stp.ID == 1, dh = 1; else, dh = 6; end; nh = 24/dh;
 dt = datenum(yrjj-1,1,1) : datenum(yrjj+1,1,1);

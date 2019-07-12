@@ -1,4 +1,4 @@
-function ysm = eraa_yrseamo (data,mod,reg,jj)
+function ysm = eraa_yrseamo (data,mod,reg,yrjj)
 
 % script calculates the variability for the year, month and season,
 % excluding the effects of the diurnal cycle, which means that we are
@@ -6,7 +6,7 @@ function ysm = eraa_yrseamo (data,mod,reg,jj)
 
 nlon = reg.size(1); nlat = reg.size(2);
 
-yrjj = jj + 1978; if mod.stp.ID == 1, dh = 1; else, dh = 6; end
+if mod.stp.ID == 1, dh = 1; else, dh = 6; end
 dt = datenum(yrjj-1,1,1) : datenum(yrjj+1,1,1);
 dt(end) = []; [ yr,mo,~,~,~,~ ] = datevec(dt);
 data = reshape(data,nlon,nlat,24/dh,[]); data = mean(data,3);

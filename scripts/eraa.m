@@ -56,9 +56,9 @@ for ii = 1 : length(pvec), par.pre = pvec(ii); dreg = [];
         yr = strsplit(name,'-'); yr = str2double(yr{end});
         
         tic; data   = eraa_ncextract(fnc,par,mod,jj); t(1) = toc;
-        tic; dt.ysm = eraa_yrseamo(data,mod,reg,jj);
-             dt.dhr = eraa_diurnal(data,mod,reg,jj);
-             dt.var = eraa_variance(data,mod,reg,jj); t(2) = toc;
+        tic; dt.ysm = eraa_yrseamo(data,mod,reg,yr);
+             dt.dhr = eraa_diurnal(data,mod,reg,yr);
+             dt.var = eraa_variance(data,mod,reg,yr); t(2) = toc;
         tic; ncname = eraa_ncsave(dt,fnc,mod,reg,jj); t(3) = toc;
         
         fprintf(['Analysed %s data in the %s region data during %d\n' ...

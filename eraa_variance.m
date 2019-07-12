@@ -1,4 +1,4 @@
-function var = eraa_variance (data,mod,reg,jj)
+function var = eraa_variance (data,mod,reg,yrjj)
 
 % script calculates the diurnal variability for each year, month and season
 % and this is different from eraa_diurnal which calculates the statistics
@@ -6,7 +6,7 @@ function var = eraa_variance (data,mod,reg,jj)
 
 nlon = reg.size(1); nlat = reg.size(2);
 
-yrjj = jj + 1978; if mod.stp.ID == 1, dh = 1; else, dh = 6; end
+if mod.stp.ID == 1, dh = 1; else, dh = 6; end
 dt = datenum(yrjj-1,1,1) : datenum(yrjj+1,1,1);
 dt(end) = []; [ yr,mo,~,~,~,~ ] = datevec(dt);
 data = reshape(data,nlon,nlat,24/dh,[]);
