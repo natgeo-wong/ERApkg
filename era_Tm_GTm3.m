@@ -16,6 +16,8 @@ lon = reg.lon; lat = reg.lat; [ mlon,mlat ] = meshgrid(lon,lat);
 
 for yr = tvec(1) : tvec(2)
     
+    pname = [ era '-' reg.ID '-' par.ID '_GT-sfc-' num2str(yr) '.nc' ];
+    
     tic; Tm = era_calc_Tm_GTm3(mlon,mlat,yr);  t(2) = toc;
     
     dim = {'lon',nlon,'lat',nlat,'t',size(PI,3)};
