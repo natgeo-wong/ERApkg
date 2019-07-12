@@ -15,7 +15,7 @@ fprintf('\n');
 lon = reg.lon; lat = reg.lat; [ mlat,mlon ] = meshgrid(lat,lon);
 
 [ ~,zpar,~,~ ] = era_initialize(ini,1,7,0);
-fol.zbase = [ root.era '/' reg.ID '/' zpar.ID '/raw' ];
+fol.zbase = [ root.era '/' reg.ID '/' zpar.ID '/raw/' ];
 cd(fol.zbase); fzsfc = dir('*.nc'); fzsfc = [ fol.zbase fzsfc(1).name ];
 
 try    z = mean(ncread(fzsfc,'z_sfc'),3,'omitnan');
