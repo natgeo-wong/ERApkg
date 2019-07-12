@@ -15,7 +15,7 @@
 %#ok<*PFBNS>
 
 clear all; [ ini,root,logf ] = era_startup(2,2);
-[ mod,par,trange,reg ] = era_initialize(ini,5,3,1);
+[ mod,par,trange,reg ] = era_initialize(ini,5,4,1);
 PI_ID = 4;
 
 fprintf('Proceeding to analyse data for the %s region.\n\n',reg.ID);
@@ -47,6 +47,9 @@ for ii = 1 : length(pvec), par.pre = pvec(ii); dreg = [];
     
     parfor jj = 1 : lnc, t = []; dt = [];
         
+        [ ~,name,~ ] = fileparts(fnc(jj).name);
+        yr = strsplit(name,'-'); yr = str2double(yr{end});
+        
         tic; data   = eraa_ncextract(fnc,par,mod,jj); t(1) = toc;
         tic; dt.ysm = eraa_yrseamo(data,mod,reg,jj);
              dt.dhr = eraa_diurnal(data,mod,reg,jj);
@@ -58,7 +61,7 @@ for ii = 1 : length(pvec), par.pre = pvec(ii); dreg = [];
                  '        Extraction: %.2f sec\n' ...
                  '        Processing and Analysis: %.2f sec\n' ...
                  '        Saving netCDF: %.2f sec\n\n' ], ...
-                 par.name,reg.ID,jj+1978,sum(t),t);
+                 par.name,reg.ID,yr,sum(t),t);
         
         movefile(ncname,fol.ana);
         
