@@ -16,6 +16,7 @@
 
 clear all; [ ini,root,logf ] = era_startup(2,2);
 [ mod,par,trange,reg ] = era_initialize(ini,5,3,1);
+PI_ID = 4;
 
 fprintf('Proceeding to analyse data for the %s region.\n\n',reg.ID);
 
@@ -30,8 +31,8 @@ for ii = 1 : length(pvec), par.pre = pvec(ii); dreg = [];
     if (mod.ID == 5 && strcmp(par.ID,'PI')) || ...
         (mod.ID == 5 && strcmp(par.ID,'t_mwv')),rmdir(fol.var,'s');
     
-        if     strcmp(par.ID,'PI'),    ID = era_PI_ID;
-        elseif strcmp(par.ID,'t_mvw'), ID = era_Tm_ID;
+        if     strcmp(par.ID,'PI'),    ID = era_PI_ID(PI_ID);
+        elseif strcmp(par.ID,'t_mwv'), ID = era_Tm_ID(PI_ID);
         end
         
         fol.var = strrep(fol.var,par.ID,[ par.ID '_' ID.type ]);
