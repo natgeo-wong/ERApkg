@@ -41,6 +41,6 @@ for yr = tvec(1) : tvec(2), ii = yr - 1978;
 end
 
 save('info_par.mat','mod','par','root');
-movefile('info_par.mat',fol.PI);
+movefile('info_par.mat',fol.Tm);
 
 end

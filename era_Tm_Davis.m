@@ -85,6 +85,6 @@ end
 delete(pobj);
 
 save('info_par.mat','mod','par','root');
-movefile('info_par.mat',fol.PI);
+movefile('info_par.mat',fol.Tm);
 
 end
