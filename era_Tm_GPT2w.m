@@ -1,4 +1,4 @@
-function fol = era_Tm_GPT2w (mod,par,reg,tvec,root,ini)
+function fol = era_Tm_GPT2w (mod,par,reg,tvec,root)
 
 
 
@@ -13,6 +13,7 @@ fol.ana = [  fol.Tm  '/ana' ];                      mkfol(fol.ana);
 fprintf('\n');
 
 lon = reg.lon; lat = reg.lat; [ mlat,mlon ] = meshgrid(lat,lon);
+nlon = size(lon); nlat = size(lat);
 
 fol.zbase = [ root.era '/' reg.ID '/z_sfc/raw/' ];
 cd(fol.zbase); fzsfc = dir('*.nc'); fzsfc = [ fol.zbase fzsfc(1).name ];
@@ -43,6 +44,6 @@ end
 delete(pobj);
 
 save('info_par.mat','mod','par','root');
-movefile('info_par.mat',fol.PI);
+movefile('info_par.mat',fol.Tm);
 
 end
