@@ -1,4 +1,4 @@
-function era_PI_save(pname,PI,reg,fol,dim)
+function era_Pi_save(pname,PI,reg,fol,dim)
 
 
 

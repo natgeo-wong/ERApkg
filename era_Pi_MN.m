@@ -1,4 +1,4 @@
-function fol = era_PI_MEA(mod,par,reg,trange,root)
+function fol = era_Pi_MN (mod,par,reg,trange,root)
 
 
 

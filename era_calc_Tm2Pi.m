@@ -1,4 +1,4 @@
-function PI = era_calc_PI_AN (Tm)
+function PI = era_calc_Tm2Pi (Tm)
 
 
 
