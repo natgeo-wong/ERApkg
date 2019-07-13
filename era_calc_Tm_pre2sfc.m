@@ -4,11 +4,11 @@ function Tm_out = era_calc_Tm_pre2sfc(Tm_in,z_air,Ts,reg,root)
 
 dim = size(Tm_in); np = dim(4); dim(3:4) = []; nps = 25;
 
-fol.zsfc = [ root.era '/' reg.ID '/z_sfc/raw/' ];
-cd(fol.zsfc); fzsfc = dir('*.nc'); fzsfc = [ fol.zsfc fzsfc(1).name ];
-disp(fzsfc);
-try    z_sfc = mean(ncread(fzsfc,'z_sfc'),3,'omitnan');
-catch, z_sfc = mean(ncread(fzsfc,'z'),3,'omitnan');
+fol.z = [ root.era '/' reg.ID '/z_sfc/raw/' ];
+cd(fol.z); fz = dir('*z_sfc*.nc'); fz = [ fol.z fz(1).name ];
+
+try    z_sfc = mean(ncread(fz,'z_sfc'),3,'omitnan');
+catch, z_sfc = mean(ncread(fz,'z'),3,'omitnan');
 end
 
 lon = reg.lon; lat = reg.lat; [ ~,mlon ] = meshgrid(lat,lon);
