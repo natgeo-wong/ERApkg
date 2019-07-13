@@ -26,8 +26,7 @@ for yr = tvec(1) : tvec(2)
     cd(fol.tmp); tic;
     Tm    = era_ncread(gname,par);
     lon_G = ncread(gname,'longitude');
-    lat_G = ncread(gname,'latitude');
-    cd(fol.raw); t(1) = toc;
+    lat_G = ncread(gname,'latitude'); t(1) = toc;
     
     [ mlat_G,mlon_G ] = meshgrid(lat_G,lon_G);
     tic; Tm = era_calc_Tm_GGOS(Tm,mlon_G,mlat_G,mlon,mlat);  t(2) = toc;
