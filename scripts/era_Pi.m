@@ -11,13 +11,12 @@
 % - Manandhar et al. [2017]
 
 clear all; [ ini,root,logf ] = era_startup(2,2);
-[ mod,par,trange,reg ] = era_initialize(ini,5,3,1);
+[ mod,par,tvec,reg ] = era_initialize(ini,5,3,1);
 
-fprintf('Proceeding to run PI script ...\n\n'); ID = era_PI_ID(2);
+fprintf('Proceeding to run Pi script ...\n\n'); ID = era_Pi_ID(2);
 
-if     ID.ID == 1, fol = era_PI_AND(mod,par,reg,trange,root,ini);
-elseif ID.ID == 2, fol = era_PI_ANB(mod,par,reg,root,ini);
-elseif ID.ID == 3, fol = era_PI_MEA(mod,par,reg,trange,root);
+if any(ID.ID == 1:6), fol = era_Pi_Tm2Pi(mod,par,reg,tvec,root,ID);
+elseif ID.ID == 7,    fol = era_Pi_MN(mod,par,reg,tvec,root);
 end
 
 era_shutdown(logf,fol.raw); clear all;

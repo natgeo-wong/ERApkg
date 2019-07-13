@@ -16,12 +16,12 @@ lon = reg.lon; lat = reg.lat; [ mlon,mlat ] = meshgrid(lon,lat);
 
 for yr = tvec(1) : tvec(2)
     
-    pname = [ era '-' reg.ID '-' par.ID '_GT-sfc-' num2str(yr) '.nc' ];
+    tname = [ era '-' reg.ID '-' par.ID '_GT-sfc-' num2str(yr) '.nc' ];
     
     tic; Tm = era_calc_Tm_GTm3(mlon,mlat,yr);  t(2) = toc;
     
     dim = {'lon',nlon,'lat',nlat,'t',size(PI,3)};
-    tic; era_Tm_save(pname,Tm,reg,fol,dim); t(4) = toc;
+    tic; era_Tm_save(tname,Tm,reg,fol,dim); t(4) = toc;
     
     fprintf([ 'Calculated Tm at surface over %s region for %d:\n' ...
               '    Method: GTm-III model (Yao et al., 2014)\n' ...

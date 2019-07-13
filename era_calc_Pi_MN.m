@@ -1,4 +1,4 @@
-function PI = era_calc_PI_MN (mod,yr,mlat,alt)
+function PI = era_calc_Pi_MN (mod,yr,mlat,alt)
 
 %                             GPSMet_PI_M2017
 %     Defines the PI constant, formula based on Manandhar et al., 2017

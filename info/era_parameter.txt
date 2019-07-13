@@ -25,7 +25,7 @@ mpre,shum,q,specific_humidity,133.128,Specific Humidity,kg kg^{-1}
 mpre,cld_air,cc,fraction_of_cloud_cover,248.128,Cloud Cover Fraction,%%
 csfc,troph,NA,NA,NA,Tropopause Height,m
 csfc,gtrop,NA,NA,NA,Tropopause Height Gradient,m d^{-1}
-csfc,PI,NA,NA,NA,PI Constant (ZWD to PWD),m/m
+csfc,Pi,NA,NA,NA,Pi Constant (ZWD to PWD),m/m
 csfc,t_mwv,NA,NA,NA,Water Vapour Weighted Column Temperature,K
 csfc,eke,NA,NA,NA,Eddy Intensity,m^2 s^{-2}
 cpre,psi_u,NA,NA,NA,Zonal Streamfunction,kg s^{-1}

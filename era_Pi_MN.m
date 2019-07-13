@@ -2,11 +2,11 @@ function fol = era_Pi_MN (mod,par,reg,trange,root)
 
 
 
-fol.reg = [ root.era '/' reg.ID ];                   mkfol(fol.reg);
-fol.PI  = [ root.era '/' reg.ID '/' par.ID '_MEA' ]; mkfol(fol.PI);
-fol.raw = [  fol.PI  '/raw' ];                       mkfol(fol.raw);
-fol.img = [  fol.PI  '/img' ];                       mkfol(fol.img);
-fol.ana = [  fol.PI  '/ana' ];                       mkfol(fol.ana);
+fol.reg = [ root.era '/' reg.ID ];                  mkfol(fol.reg);
+fol.Pi  = [ root.era '/' reg.ID '/' par.ID '_MN' ]; mkfol(fol.Pi);
+fol.raw = [  fol.Pi  '/raw' ];                      mkfol(fol.raw);
+fol.img = [  fol.Pi  '/img' ];                      mkfol(fol.img);
+fol.ana = [  fol.Pi  '/ana' ];                      mkfol(fol.ana);
 
 lon = reg.lon; nlon = reg.size(1);
 lat = reg.lat; nlat = reg.size(2); [ mlat,~ ] = meshgrid(lat,lon);
@@ -22,22 +22,22 @@ fprintf('\n');
 
 for yr = trange(1) : trange(2)
     
-    pname = era_PI_MEA_ncname(mod,par,reg,yr);
-    tic; PI = era_calc_PI_MN(mod,yr,mlat,oro); t(1) = toc;
-    dim = {'lon',nlon,'lat',nlat,'t',size(PI,3)};
+    pname = era_Pi_MN_ncname(mod,par,reg,yr);
+    tic; Pi = era_calc_Pi_MN(mod,yr,mlat,oro); t(1) = toc;
+    dim = {'lon',nlon,'lat',nlat,'t',size(Pi,3)};
     
-    tic; era_PI_save(pname,PI,reg,fol,dim); t(2) = toc;
+    tic; era_Pi_save(pname,Pi,reg,fol,dim);    t(2) = toc;
     
-    fprintf([ 'Calculated PI over %s region for %d:\n' ...
+    fprintf([ 'Calculated Pi over %s region for %d:\n' ...
               '    Method: Manandhar et al. [2017]\n' ...
               '    Total Elapsed Time: %.2f sec\n' ...
-              '        Calculating PI: %.2f sec\n' ...
+              '        Calculating Pi: %.2f sec\n' ...
               '        Save netCDF: %.2f sec\n\n' ], ...
               reg.ID,yr,sum(t),t(1),t(2));
     
 end
 
 save('info_par.mat','mod','par','root');
-movefile('info_par.mat',fol.PI);
+movefile('info_par.mat',fol.Pi);
 
 end

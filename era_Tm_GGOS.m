@@ -20,7 +20,7 @@ if isempty(gcp('nocreate')), pobj = parpool(31); end
 for yr = tvec(1) : tvec(2)
     
     if mod.stp.ID == 1, era = 'era5'; else, era = 'erai'; end
-    pname = [ era '-' reg.ID '-' par.ID '_GA-sfc-' num2str(yr) '.nc' ];
+    tname = [ era '-' reg.ID '-' par.ID '_GA-sfc-' num2str(yr) '.nc' ];
     
     cd(fol.tmp); tic;
     Tm  = era_ncread(ncname,par);
@@ -32,7 +32,7 @@ for yr = tvec(1) : tvec(2)
     tic; Tm = era_calc_Tm_GGOS(Tm,mlon_G,mlat_G,mlon,mlat);  t(2) = toc;
     
     dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
-    tic; era_Tm_save(pname,Tm,reg,fol,dim); t(3) = toc;
+    tic; era_Tm_save(tname,Tm,reg,fol,dim); t(3) = toc;
     
     fprintf([ 'Calculated Tm at surface over %s region for %d:\n' ...
               '    Method: GGOS Atmosphere model (Bohm & Schuh, 2013)\n' ...
