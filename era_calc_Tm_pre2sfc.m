@@ -6,7 +6,7 @@ dim = size(Tm_in); np = dim(4); dim(3:4) = []; nps = 25;
 
 fol.zsfc = [ root.era '/' reg.ID '/z_sfc/raw/' ];
 cd(fol.zsfc); fzsfc = dir('*.nc'); fzsfc = [ fol.zsfc fzsfc(1).name ];
-
+disp(fzsfc);
 try    z_sfc = mean(ncread(fzsfc,'z_sfc'),3,'omitnan');
 catch, z_sfc = mean(ncread(fzsfc,'z'),3,'omitnan');
 end
