@@ -71,7 +71,7 @@ for yr = tvec(1) : tvec(2)
         
     end
     
-    cd(root.era); dim = {'lon',nlon,'lat',nlat,'t',size(PI,3)};
+    cd(root.era); dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
     tic; era_Tm_save(pname,Tm_sfc,reg,fol,dim); t(2) = toc;
     
     fprintf([ 'Calculated Tm at surface over %s region for %d:\n' ...
