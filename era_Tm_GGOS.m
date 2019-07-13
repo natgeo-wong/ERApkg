@@ -20,12 +20,13 @@ if isempty(gcp('nocreate')), pobj = parpool(31); end
 for yr = tvec(1) : tvec(2)
     
     if mod.stp.ID == 1, era = 'era5'; else, era = 'erai'; end
+    gname = [ 'GGOS-' reg.ID '-' par.ID '_GA-sfc-' num2str(yr) '.nc' ];
     tname = [ era '-' reg.ID '-' par.ID '_GA-sfc-' num2str(yr) '.nc' ];
     
     cd(fol.tmp); tic;
-    Tm  = era_ncread(ncname,par);
-    lon_G = era_ncread(ncname,'longitude');
-    lat_G = era_ncread(ncname,'latitude');
+    Tm    = era_ncread(gname,par);
+    lon_G = era_ncread(gname,'longitude');
+    lat_G = era_ncread(gname,'latitude');
     cd(fol.raw); t(1) = toc;
     
     [ mlat_G,mlon_G ] = meshgrid(lat_G,lon_G);

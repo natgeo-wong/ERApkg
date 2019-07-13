@@ -27,7 +27,7 @@ for yr = tvec(1) : tvec(2), ii = yr - 1978;
     tic; Ts = era_ncread(tname,tpar);           t(1) = toc;
     tic; Tm = era_calc_Tm_Bevis(Ts,ID.ID,reg);  t(2) = toc;
     
-    dim = {'lon',nlon,'lat',nlat,'t',size(PI,3)};
+    dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
     tic; era_Tm_save(pname,Tm,reg,fol,dim);     t(3) = toc;
     
     fprintf([ 'Calculated Tm at surface over %s region for %d:\n' ...
