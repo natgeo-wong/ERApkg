@@ -37,7 +37,7 @@ for yr = tvec(1) : tvec(2)
     if exist(pname,'file') == 2, delete(pname); end
     
     tic;
-    Tm_sfc = zeros([ reg.size nhr ]);
+    Tm = zeros([ reg.size nhr ]);
     
     parfor tt = 1 : nhr, kk = 0;
     
@@ -67,12 +67,12 @@ for yr = tvec(1) : tvec(2)
         
         cd(root.era);
         Tm_pre = era_calc_Tm_Davis(Ta,sH,p,Ts);
-        Tm_sfc(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,Ts,reg,root);
+        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,Ts,reg,root);
         
     end
     
     cd(root.era); dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
-    tic; era_Tm_save(pname,Tm_sfc,reg,fol,dim); t(2) = toc;
+    tic; era_Tm_save(pname,Tm,reg,fol,dim); t(2) = toc;
     
     fprintf([ 'Calculated Tm at surface over %s region for %d:\n' ...
               '    Method: Davis et al. [1985]\n' ...
