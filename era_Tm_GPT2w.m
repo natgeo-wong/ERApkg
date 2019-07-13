@@ -17,6 +17,7 @@ nlon = numel(lon); nlat = numel(lat);
 
 fol.zbase = [ root.era '/' reg.ID '/z_sfc/raw/' ];
 cd(fol.zbase); fzsfc = dir('*.nc'); fzsfc = [ fol.zbase fzsfc(1).name ];
+cd(root.era);
 
 try    z = mean(ncread(fzsfc,'z_sfc'),3,'omitnan');
 catch, z = mean(ncread(fzsfc,'z'),3,'omitnan');
