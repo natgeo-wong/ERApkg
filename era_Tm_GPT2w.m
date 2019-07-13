@@ -13,7 +13,7 @@ fol.ana = [  fol.Tm  '/ana' ];                      mkfol(fol.ana);
 fprintf('\n');
 
 lon = reg.lon; lat = reg.lat; [ mlat,mlon ] = meshgrid(lat,lon);
-nlon = size(lon); nlat = size(lat);
+nlon = numel(lon); nlat = numel(lat);
 
 fol.zbase = [ root.era '/' reg.ID '/z_sfc/raw/' ];
 cd(fol.zbase); fzsfc = dir('*.nc'); fzsfc = [ fol.zbase fzsfc(1).name ];
