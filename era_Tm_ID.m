@@ -2,7 +2,7 @@ function Tm = era_Tm_ID (ID)
 
 
 
-disp('ERApkg supports the creation of PI by various methods:');
+disp('ERApkg supports the calculation of column-mean temperature by various methods:');
 disp('1) Tm given by Davis et al. [1985]');
 disp('2) Tm given by Bevis et al. [1992], (a,b) given by Bevis et al. [1992]');
 disp('3) Tm given by Bevis et al. [1992], (a,b) given by Manandhar et al. [2017]');

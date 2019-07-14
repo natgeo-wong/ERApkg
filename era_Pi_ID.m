@@ -2,7 +2,7 @@ function PI = era_Pi_ID (ID)
 
 
 
-disp('ERApkg supports the creation of PI by various methods:');
+disp('ERApkg supports the calculation of PI by various methods:');
 disp('1) Askne and Nodius [1997], Tm given by Davis et al. [1985]');
 disp('2) Askne and Nodius [1997], Tm given by Bevis et al. [1992], (a,b) given by Bevis et al. [1992]');
 disp('3) Askne and Nodius [1997], Tm given by Bevis et al. [1992], (a,b) given by Manandhar et al. [2017]');
