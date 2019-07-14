@@ -70,6 +70,7 @@ for yr = tvec(1) : tvec(2)
         Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,Ts,reg,root);
         
     end
+    t(1) = toc;
     
     cd(root.era); dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
     tic; era_Tm_save(pname,Tm,reg,fol,dim); t(2) = toc;
@@ -79,7 +80,7 @@ for yr = tvec(1) : tvec(2)
               '    Total Elapsed Time: %.2f sec\n' ...
               '        Extraction and Calculation: %.2f sec\n' ...
               '        Save netCDF: %.2f sec\n\n' ], ...
-              reg.ID,yr,sum(t),t);
+              reg.ID,yr,sum(t),t(1),t(2));
     
 end
 delete(pobj);

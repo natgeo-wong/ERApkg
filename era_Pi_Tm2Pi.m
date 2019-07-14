@@ -12,7 +12,7 @@ fprintf('\n');
 lon = reg.lon; lat = reg.lat; nlon = numel(lon); nlat = numel(lat);
 
 TmID = era_Tm_ID(ID.ID); tpar.ID = 't_mwv';
-fol.Tm  = [ root.era '/' reg.ID '/t_mwv_' TmID.type ]; cd(fol.Tm);
+fol.Tm  = [ root.era '/' reg.ID '/t_mwv_' TmID.type '/raw/' ]; cd(fol.Tm);
 
 for yr = tvec(1) : tvec(2)
     
@@ -26,12 +26,12 @@ for yr = tvec(1) : tvec(2)
     tic; era_Pi_save(pname,Pi,reg,fol,dim); t(3) = toc;
     
     fprintf([ 'Calculated Pi over %s region for %d:\n' ...
-              '    Method: Manandhar et al. [2017]\n' ...
+              '    Method: Askne and Nodius [1985], Tm %s\n' ...
               '    Total Elapsed Time: %.2f sec\n' ...
               '        Extracting Tm: %.2f sec\n' ...
               '        Calculating Pi: %.2f sec\n' ...
               '        Save netCDF: %.2f sec\n\n' ], ...
-              reg.ID,yr,sum(t),t(1),t(2));
+              reg.ID,yr,TmID.type,sum(t),t(1),t(2));
     
 end
 
