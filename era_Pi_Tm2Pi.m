@@ -31,11 +31,11 @@ for yr = tvec(1) : tvec(2)
               '        Extracting Tm: %.2f sec\n' ...
               '        Calculating Pi: %.2f sec\n' ...
               '        Save netCDF: %.2f sec\n\n' ], ...
-              reg.ID,yr,TmID.type,sum(t),t(1),t(2));
+              reg.ID,yr,TmID.type,sum(t),t(1),t(2),t(3));
     
 end
 
 save('info_par.mat','mod','par','root');
-movefile('info_par.mat',fol.PI);
+movefile('info_par.mat',fol.Pi);
 
 end
