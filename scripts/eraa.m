@@ -14,7 +14,8 @@
 
 %#ok<*PFBNS>
 
-clear all; [ ini,root,logf ] = era_startup(2,2);
+clear all; era_addpath;
+[ ini,root,logf ] = era_startup(2,2);
 [ mod,par,trange,reg ] = era_initialize(ini,5,4,1);
 Pi_ID = 5;
 

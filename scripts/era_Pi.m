@@ -10,7 +10,8 @@
 % - Askne and Nodius [1997], where Tm is given by Bevis et al. [1992]
 % - Manandhar et al. [2017]
 
-clear all; [ ini,root,logf ] = era_startup(2,2);
+clear all; era_addpath;
+[ ini,root,logf ] = era_startup(2,2);
 [ mod,par,tvec,reg ] = era_initialize(ini,5,3,1);
 
 fprintf('Proceeding to run Pi script ...\n\n'); ID = era_Pi_ID(2);

@@ -12,7 +12,8 @@
 % Based on all the inputs given, a python script and enclosing folder will
 % be created.
 
-clear all; [ ini,root,logf ] = era_startup(1);
+clear all; era_addpath;
+[ ini,root,logf ] = era_startup(1);
 [ mod,par,trange,reg ] = era_initialize(ini);
 
 fprintf('Proceeding to create download script(s) ...\n\n');
