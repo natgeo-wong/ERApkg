@@ -2,7 +2,7 @@ function [ ini,root,logf ] = era_startup (actID,dID)
 
 
 
-close all; clc; ntxt = length(dir('*.txt'));
+close all; clc; era_addpath; ntxt = length(dir('*.txt'));
 ftxt = [ 'log' num2str(ntxt+1) '.txt' ];
 root = era_root; diary(ftxt); logf = [ pwd '/' ftxt ];
 
