@@ -19,11 +19,13 @@ p = era_pressure_load;
 [ ~,hpar,~,~ ] = era_initialize(ini,4,2,0);
 [ ~,zpar,~,~ ] = era_initialize(ini,2,5,0);
 [ ~,spar,~,~ ] = era_initialize(ini,1,3,0);
+[ ~,dpar,~,~ ] = era_initialize(ini,2,4,0);
 [ ~,opar,~,~ ] = era_initialize(ini,1,7,0);
 fol.tbase = [ root.era '/' reg.ID '/' tpar.ID ];
 fol.hbase = [ root.era '/' reg.ID '/' hpar.ID ];
 fol.zbase = [ root.era '/' reg.ID '/' zpar.ID ];
     sbase = [ root.era '/' reg.ID '/' spar.ID '/raw/' ];
+    dbase = [ root.era '/' reg.ID '/' dpar.ID '/raw/' ];
     obase = [ root.era '/' reg.ID '/' opar.ID '/raw/' ];
     
 cd(obase); fz = dir('*z_sfc*.nc'); fz = [ obase fz(1).name ];
@@ -54,6 +56,8 @@ for yr = tvec(1) : tvec(2)
         
         cd(sbase); snc = dir('*.nc'); sname = [sbase '/' snc(ii).name];
         cd(root.era); Ts = era_ncread(sname,spar,[1 1 tt],[Inf Inf 1]);
+        %cd(dbase); dnc = dir('*.nc'); dname = [dbase '/' dnc(ii).name];
+        %cd(root.era); Td = era_ncread(dname,dpar,[1 1 tt],[Inf Inf 1]);
         
         for jj = p, pjj = num2str(jj); kk = kk + 1;
             
