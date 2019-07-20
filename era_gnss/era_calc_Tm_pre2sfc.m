@@ -3,11 +3,11 @@ function Tm_out = era_calc_Tm_pre2sfc(Tm_in,z_air,z_sfc,reg)
 
 
 dim = size(Tm_in); np = dim(4); dim(3:4) = []; nps = 25;
-npts = reg.size(1) * reg.size(2); z_sfc = z_sfc(:);
+npts = reg.size(1) * reg.size(2);
 
 % Assume hydrostatic balance in the atmosphere
 z_37  = z_air(:,:,:,37);
-z_38  = z_sfc; z_38(z_38>z_37) = 0;
+z_38  = z_sfc; z_38(z_38>z_37) = 0; z_sfc = z_sfc(:);
 z_air = z_air(:,:,:,nps:37); Tm_in = Tm_in(:,:,:,nps:end);
 
 if     np == 37, z = z_air(:);
