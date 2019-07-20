@@ -75,7 +75,7 @@ for yr = tvec(1) : tvec(2)
         cd(root.era);
         %Tm_pre = era_calc_Tm_Davis_zvert(Ta,sH,p,Ts,za,zs);
         Tm_pre = era_calc_Tm_Davis_pvert(Ta,sH,p,Ts);
-        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,Ts,zs,reg);
+        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,zs,reg);
         
     end
     t(1) = toc;
