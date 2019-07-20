@@ -1,4 +1,4 @@
-function Tm = era_calc_Tm_Davis_pvert (p,Ta,Ts,sH)
+function Tm = era_calc_Tm_Davis_pa (p,Ta,Ts,sH)
 
 
 

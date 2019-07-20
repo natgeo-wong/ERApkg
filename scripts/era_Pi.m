@@ -16,8 +16,8 @@ clear all; era_addpath;
 
 fprintf('Proceeding to run Pi script ...\n\n'); ID = era_Pi_ID(2);
 
-if any(ID.ID == 1:6), fol = era_Pi_Tm2Pi(mod,par,reg,tvec,root,ID);
-elseif ID.ID == 7,    fol = era_Pi_MN(mod,par,reg,tvec,root);
+if any(ID.ID == 1:9), fol = era_Pi_Tm2Pi(mod,par,reg,tvec,root,ID);
+elseif ID.ID == 10,   fol = era_Pi_MN(mod,par,reg,tvec,root);
 end
 
 era_shutdown(logf,fol.raw); clear all;

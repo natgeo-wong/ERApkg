@@ -17,11 +17,11 @@ ID = 4;
 
 fprintf('Proceeding to run Tm script ...\n\n');
 
-if     ID == 1,          fol = era_Tm_Davis(mod,par,reg,tvec,root,ini);
-elseif any(ID == [2 3]), fol = era_Tm_Bevis(mod,par,reg,tvec,root,ini,ID);
-elseif ID == 4,          fol = era_Tm_GGOS (mod,par,reg,tvec,root);
-elseif ID == 5,          fol = era_Tm_GPT2w(mod,par,reg,tvec,root);
-elseif ID == 6,          fol = era_Tm_GTm3 (mod,par,reg,tvec,root);
+if     any(ID == 1:4),   fol = era_Tm_Davis(mod,par,reg,tvec,root,ini,ID);
+elseif any(ID == [5 6]), fol = era_Tm_Bevis(mod,par,reg,tvec,root,ini,ID);
+elseif ID == 7,          fol = era_Tm_GGOS (mod,par,reg,tvec,root);
+elseif ID == 8,          fol = era_Tm_GPT2w(mod,par,reg,tvec,root);
+elseif ID == 9,          fol = era_Tm_GTm3 (mod,par,reg,tvec,root);
 end
 
 era_shutdown(logf,fol.raw); clear all;

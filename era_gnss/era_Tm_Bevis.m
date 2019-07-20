@@ -9,6 +9,7 @@ fol.Tm  = [ root.era '/' reg.ID '/' par.ID '_' ID.type ]; mkfol(fol.Tm);
 fol.raw = [  fol.Tm  '/raw' ];                            mkfol(fol.raw);
 fol.img = [  fol.Tm  '/img' ];                            mkfol(fol.img);
 fol.ana = [  fol.Tm  '/ana' ];                            mkfol(fol.ana);
+fprintf('\n');
 
 nlon = reg.size(1); nlat = reg.size(2);
 
@@ -16,7 +17,6 @@ nlon = reg.size(1); nlat = reg.size(2);
 
 fol.tbase = [ root.era '/' reg.ID '/' tpar.ID '/raw' ]; cd(fol.tbase);
 tnc = dir('*.nc'); cd(root.era);
-fprintf('\n');
 
 for yr = tvec(1) : tvec(2), ii = yr - 1978;
     

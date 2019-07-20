@@ -1,15 +1,17 @@
-function fol = era_Tm_Davis (mod,par,reg,tvec,root,ini)
+function fol = era_Tm_Davis (mod,par,reg,tvec,root,ini,ID)
 
 
 
 %#ok<*AGROW>
 %#ok<*PFBNS>
 
-fol.reg = [ root.era '/' reg.ID ];                  mkfol(fol.reg);
-fol.Tm  = [ root.era '/' reg.ID '/' par.ID '_D' ];  mkfol(fol.Tm);
-fol.raw = [  fol.Tm  '/raw' ];                      mkfol(fol.raw);
-fol.img = [  fol.Tm  '/img' ];                      mkfol(fol.img);
-fol.ana = [  fol.Tm  '/ana' ];                      mkfol(fol.ana);
+ID = era_Tm_ID(ID);
+
+fol.reg = [ root.era '/' reg.ID ];                         mkfol(fol.reg);
+fol.Tm  = [ root.era '/' reg.ID '/' par.ID '_' ID.type ];  mkfol(fol.Tm);
+fol.raw = [  fol.Tm  '/raw' ];                             mkfol(fol.raw);
+fol.img = [  fol.Tm  '/img' ];                             mkfol(fol.img);
+fol.ana = [  fol.Tm  '/ana' ];                             mkfol(fol.ana);
 fprintf('\n');
 
 nlon = reg.size(1); nlat = reg.size(2);
@@ -42,7 +44,7 @@ for yr = tvec(1) : tvec(2)
     else,               era = 'erai'; nhr = 4  * ndy;
     end
     
-    pname = [ era '-' reg.ID '-' par.ID '_D-sfc-' num2str(yr) '.nc' ];
+    pname = [ era '-' reg.ID '-' par.ID '_' ID.type '-sfc-' num2str(yr) '.nc' ];
     if exist(pname,'file') == 2, delete(pname); end
     
     tic;
@@ -56,8 +58,11 @@ for yr = tvec(1) : tvec(2)
         
         cd(sbase); snc = dir('*.nc'); sname = [sbase '/' snc(ii).name];
         cd(root.era); Ts = era_ncread(sname,spar,[1 1 tt],[Inf Inf 1]);
-        %cd(dbase); dnc = dir('*.nc'); dname = [dbase '/' dnc(ii).name];
-        %cd(root.era); Td = era_ncread(dname,dpar,[1 1 tt],[Inf Inf 1]);
+        
+        if any(ID.ID == 3:4)
+            cd(dbase); dnc = dir('*.nc'); dname = [dbase '/' dnc(ii).name];
+            cd(root.era); Td = era_ncread(dname,dpar,[1 1 tt],[Inf Inf 1]);
+        end
         
         for jj = p, pjj = num2str(jj); kk = kk + 1;
             
@@ -77,10 +82,11 @@ for yr = tvec(1) : tvec(2)
         end
         
         cd(root.era);
-        %Tm_pre = era_calc_Tm_Davis_zvert(p,Ta,Ts,sH,za,zs);
-        Tm_pre = era_calc_Tm_Davis_pvert(p,Ta,Ts,sH);
-        %Tm_pre = era_calc_Tm_Davis_zvert(p,Ta,Ts,Td,sH,za,zs);
-        %Tm_pre = era_calc_Tm_Davis_pvert(p,Ta,Ts,Td,sH);
+        if     ID.ID == 1, Tm_pre = era_calc_Tm_Davis_pa(p,Ta,Ts,sH);
+        elseif ID.ID == 2, Tm_pre = era_calc_Tm_Davis_za(p,Ta,Ts,sH,za,zs);
+        elseif ID.ID == 3, Tm_pre = era_calc_Tm_Davis_pd(p,Ta,Ts,Td,sH);
+        elseif ID.ID == 4, Tm_pre = era_calc_Tm_Davis_zd(p,Ta,Ts,Td,sH,za,zs);
+        end
         Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,zs,reg);
         
     end
