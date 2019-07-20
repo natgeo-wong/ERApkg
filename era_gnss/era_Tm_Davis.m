@@ -19,10 +19,17 @@ p = era_pressure_load;
 [ ~,hpar,~,~ ] = era_initialize(ini,4,2,0);
 [ ~,zpar,~,~ ] = era_initialize(ini,2,5,0);
 [ ~,spar,~,~ ] = era_initialize(ini,1,3,0);
+[ ~,opar,~,~ ] = era_initialize(ini,1,7,0);
 fol.tbase = [ root.era '/' reg.ID '/' tpar.ID ];
 fol.hbase = [ root.era '/' reg.ID '/' hpar.ID ];
 fol.zbase = [ root.era '/' reg.ID '/' zpar.ID ];
     sbase = [ root.era '/' reg.ID '/' spar.ID '/raw/' ];
+    obase = [ root.era '/' reg.ID '/' opar.ID '/raw/' ];
+    
+cd(obase); fz = dir('*z_sfc*.nc'); fz = [ fol.z fz(1).name ];
+try    zs = mean(ncread(fz,'z_sfc'),3,'omitnan');
+catch, zs = mean(ncread(fz,'z'),3,'omitnan');
+end
 
 if isempty(gcp('nocreate')), pobj = parpool(31); end
 for yr = tvec(1) : tvec(2)
@@ -66,8 +73,9 @@ for yr = tvec(1) : tvec(2)
         end
         
         cd(root.era);
-        Tm_pre = era_calc_Tm_Davis(Ta,sH,p,Ts);
-        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,Ts,reg,root);
+        %Tm_pre = era_calc_Tm_Davis_zvert(Ta,sH,p,Ts,za,zs);
+        Tm_pre = era_calc_Tm_Davis_pvert(Ta,sH,p,Ts);
+        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,Ts,zs,reg);
         
     end
     t(1) = toc;

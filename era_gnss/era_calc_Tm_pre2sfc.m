@@ -1,18 +1,9 @@
-function Tm_out = era_calc_Tm_pre2sfc(Tm_in,z_air,Ts,reg,root)
+function Tm_out = era_calc_Tm_pre2sfc(Tm_in,z_air,Ts,z_sfc,reg)
 
 
 
 dim = size(Tm_in); np = dim(4); dim(3:4) = []; nps = 25;
-
-fol.z = [ root.era '/' reg.ID '/z_sfc/raw/' ];
-cd(fol.z); fz = dir('*z_sfc*.nc'); fz = [ fol.z fz(1).name ];
-
-try    z_sfc = mean(ncread(fz,'z_sfc'),3,'omitnan');
-catch, z_sfc = mean(ncread(fz,'z'),3,'omitnan');
-end
-
-lon = reg.lon; lat = reg.lat; [ ~,mlon ] = meshgrid(lat,lon);
-mlon = mlon(:); z_sfc = z_sfc(:); npts = length(mlon);
+npts = reg.size(1) * reg.size(2); z_sfc = z_sfc(:);
 
 % Assume hydrostatic balance in the atmosphere
 z_37  = z_air(:,:,:,37);
@@ -28,7 +19,7 @@ z = reshape(z,[],nlvl); Tm_out = zeros(npts,1);
 
 for ii = 1 : npts, zii = z(ii,:); Tm_ii = Tm_in(ii,:); sfcii = z_sfc(ii);
     
-    Tm_out(ii) = interp1(zii(:),Tm_ii(:),sfcii,'spline');
+    Tm_out(ii) = interp1(zii(:),Tm_ii(:),sfcii,'makima');
     
 end
 
