@@ -26,7 +26,7 @@ fol.zbase = [ root.era '/' reg.ID '/' zpar.ID ];
     sbase = [ root.era '/' reg.ID '/' spar.ID '/raw/' ];
     obase = [ root.era '/' reg.ID '/' opar.ID '/raw/' ];
     
-cd(obase); fz = dir('*z_sfc*.nc'); fz = [ fol.z fz(1).name ];
+cd(obase); fz = dir('*z_sfc*.nc'); fz = [ obase fz(1).name ];
 try    zs = mean(ncread(fz,'z_sfc'),3,'omitnan');
 catch, zs = mean(ncread(fz,'z'),3,'omitnan');
 end
