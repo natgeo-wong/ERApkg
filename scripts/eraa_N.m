@@ -27,12 +27,7 @@ if isempty(gcp('nocreate')), pobj = parpool(31); end
 for ii = 1 : length(pvec), par.pre = pvec(ii); dreg = [];
     
     fol = era_folder(par,reg,root); try rmdir([fol.var '/tmp']); end
-    cd(fol.reg);
-    
-    if (strcmp(par.ID,'t_mwv') || strcmp(par.ID,'Pi')) && Pi_ID == 4
-          load('info_reg_GGOS.mat');
-    else, load('info_reg.mat');
-    end
+    cd(fol.reg); load('info_reg.mat');
     
     if (mod.ID == 5 && strcmp(par.ID,'Pi')) || ...
         (mod.ID == 5 && strcmp(par.ID,'t_mwv')),rmdir(fol.var,'s');
