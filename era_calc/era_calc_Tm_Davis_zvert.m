@@ -1,11 +1,11 @@
-function Tm = era_calc_Tm_Davis_zvert (Ta,sH,p,Ts,za,zs)
+function Tm = era_calc_Tm_Davis_zvert (p,Ta,Ts,sH,za,zs)
 
 
 
 Rd = 287.05; Rv = 461.51; ep = Rd / Rv;
 p(end+1) = 1012.35; p = reshape(p,1,1,1,[]); np = size(p,4);
 Ta = cat(4,Ta,Ts); sH = cat(4,sH,sH(:,:,:,37)); za = cat(4,za,zs);
-e = p .* ((1-sH) ./ (1-sH + sH/ep));
+e = p .* sH ./ ((1-sH)*ep + sH);
 
 top = e ./ Ta; bot = e ./ Ta.^2; dim = size(top); Tm = zeros(dim);
 top = reshape(top,[],np)'; bot = reshape(bot,[],np)';
