@@ -17,6 +17,6 @@ for ii = 1 : npt
     Tm(:,ii) = cumtrapz(zai,ti,1) ./ cumtrapz(zai,bi,1);
 end
 
-Tm = reshape(Tm,dim);
+Tm = reshape(Tm',dim);
 
 end
