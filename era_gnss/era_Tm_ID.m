@@ -3,10 +3,10 @@ function Tm = era_Tm_ID (ID)
 
 
 disp('ERApkg supports the calculation of column-mean temperature by various methods:');
-disp('2) Tm given by Davis et al. [1985], Pressure Coordinates, Surface Humidity approximated');
-disp('1) Tm given by Davis et al. [1985], Vertical Coordinates, Surface Humidity approximated');
-disp('4) Tm given by Davis et al. [1985], Pressure Coordinates, Surface Humidity from Dewpoint');
-disp('3) Tm given by Davis et al. [1985], Vertical Coordinates, Surface Humidity from Dewpoint');
+disp('1) Tm given by Davis et al. [1985], Pressure Coordinates, Surface Humidity approximated');
+disp('2) Tm given by Davis et al. [1985], Vertical Coordinates, Surface Humidity approximated');
+disp('3) Tm given by Davis et al. [1985], Pressure Coordinates, Surface Humidity from Dewpoint');
+disp('4) Tm given by Davis et al. [1985], Vertical Coordinates, Surface Humidity from Dewpoint');
 disp('5) Tm given by Bevis et al. [1992], (a,b) given by Bevis et al. [1992]');
 disp('6) Tm given by Bevis et al. [1992], (a,b) given by Manandhar et al. [2017]');
 disp('7) Tm given by GGOS Atmosphere model (Bohm & Schuh, 2013)');
