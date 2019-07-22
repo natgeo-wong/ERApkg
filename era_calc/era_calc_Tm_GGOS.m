@@ -8,9 +8,8 @@ Tm_out = reshape(Tm_out,[],nt);
 mlon_G = mlon_G(:); mlat_G = mlat_G(:); mlon = mlon(:); mlat = mlat(:);
 
 parfor ii = 1 : nt, Tmii = Tm_in(:,:,ii); Tmii = Tmii(:);
-    try    Tm_out(:,ii) = interp2(mlon_G,mlat_G,Tmii,mlon,mlat,'makima');
-    catch, Tm_out(:,ii) = NaN;
-    end
+    Tm_out(:,ii) = interp2(mlon_G,mlat_G,Tmii,mlon,mlat,'makima');
+    Tm_out(:,ii) = NaN;
 end
 
 Tm_out = reshape(Tm_out,[dim nt]);
