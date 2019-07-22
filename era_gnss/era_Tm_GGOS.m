@@ -29,7 +29,9 @@ for yr = tvec(1) : tvec(2)
     lat_G = ncread(gname,'latitude'); t(1) = toc;
     
     [ mlat_G,mlon_G ] = meshgrid(lat_G,lon_G);
-    tic; Tm = era_calc_Tm_GGOS(Tm,mlon_G,mlat_G,mlon,mlat);  t(2) = toc;
+    mlat = mlat*-1; mlat_G = mlat_G*-1; % Interp2 requires monotonically
+                                        % increasing values
+    tic; Tm = era_calc_Tm_GGOS(Tm,mlon_G,mlat_G,mlon,mlat); t(2) = toc;
     
     dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
     tic; era_Tm_save(tname,Tm,reg,fol,dim); t(3) = toc;
