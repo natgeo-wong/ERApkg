@@ -14,6 +14,7 @@ fol.ana = [  fol.Tm  '/ana' ];                      mkfol(fol.ana);
 fprintf('\n');
 
 lon = reg.lon; lat = reg.lat; lat = -lat;
+[ mlat,mlon ] = meshgrid(lat,lon);
 nlon = numel(lon); nlat = numel(lat);
 
 if isempty(gcp('nocreate')), pobj = parpool(31); end
@@ -28,7 +29,7 @@ for yr = tvec(1) : tvec(2)
     lon_G = ncread(gname,'longitude');
     lat_G = ncread(gname,'latitude'); lat_G = -lat_G; t(1) = toc;
 
-    tic; Tm = era_calc_Tm_GGOS(Tm,lon_G,lat_G,lon,lat); t(2) = toc;
+    tic; Tm = era_calc_Tm_GGOS(Tm,lon_G,lat_G,mlon,mlat); t(2) = toc;
     
     dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
     tic; era_Tm_save(tname,Tm,reg,fol,dim); t(3) = toc;
