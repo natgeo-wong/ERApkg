@@ -13,7 +13,7 @@ fol.img = [  fol.Tm  '/img' ];                      mkfol(fol.img);
 fol.ana = [  fol.Tm  '/ana' ];                      mkfol(fol.ana);
 fprintf('\n');
 
-lon = reg.lon; lat = reg.lat; [ mlat,mlon ] = meshgrid(lat,lon);
+lon = reg.lon; lat = reg.lat; lat = -lat;
 nlon = numel(lon); nlat = numel(lat);
 
 if isempty(gcp('nocreate')), pobj = parpool(31); end
@@ -26,12 +26,9 @@ for yr = tvec(1) : tvec(2)
     cd(fol.tmp); tic;
     Tm    = era_ncread(gname,par);
     lon_G = ncread(gname,'longitude');
-    lat_G = ncread(gname,'latitude'); t(1) = toc;
-    
-    [ mlat_G,mlon_G ] = meshgrid(lat_G,lon_G);
-    mlat = mlat*-1; mlat_G = mlat_G*-1; % Interp2 requires monotonically
-                                        % increasing values
-    tic; Tm = era_calc_Tm_GGOS(Tm,mlon_G,mlat_G,mlon,mlat); t(2) = toc;
+    lat_G = ncread(gname,'latitude'); lat_G = -lat_G; t(1) = toc;
+
+    tic; Tm = era_calc_Tm_GGOS(Tm,lon_G,lat_G,lon,lat); t(2) = toc;
     
     dim = {'lon',nlon,'lat',nlat,'t',size(Tm,3)};
     tic; era_Tm_save(tname,Tm,reg,fol,dim); t(3) = toc;
