@@ -9,7 +9,7 @@ e = p .* sH ./ ((1-sH)*ep + sH);
 
 top = e ./ Ta; bot = e ./ Ta.^2; dim = size(top); Tm = zeros(dim);
 top = reshape(top,[],np)'; bot = reshape(bot,[],np)';
-za = reshape(za,[],np)'; Tm = reshape(Tm,[],np)'; npt = size(Tm,1);
+za = reshape(za,[],np)'; Tm = reshape(Tm,[],np)'; npt = size(Tm,2);
 
 for ii = 1 : npt
     zai = za(:,ii); ti = top(:,ii); bi = bot(:,ii);
