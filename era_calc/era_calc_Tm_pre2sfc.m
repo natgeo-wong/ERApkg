@@ -1,4 +1,4 @@
-function Tm_out = era_calc_Tm_pre2sfc(Tm_in,z_air,z_sfc,reg)
+function Tm_out = era_calc_Tm_pre2sfc(Tm_in,Ts,z_air,z_sfc,reg)
 
 
 

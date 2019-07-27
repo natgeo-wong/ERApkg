@@ -87,7 +87,7 @@ for yr = tvec(1) : tvec(2)
         elseif ID.ID == 3, Tm_pre = era_calc_Tm_Davis_pd(p,Ta,Ts,Td,sH);
         elseif ID.ID == 4, Tm_pre = era_calc_Tm_Davis_zd(p,Ta,Ts,Td,sH,za,zs);
         end
-        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,za,zs,reg);
+        Tm(:,:,tt) = era_calc_Tm_pre2sfc(Tm_pre,Ts,za,zs,reg);
         
     end
     t(1) = toc;
