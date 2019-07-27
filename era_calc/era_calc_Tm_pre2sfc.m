@@ -8,7 +8,7 @@ z_37  = z_air(:,:,:,37); z_38  = z_sfc;
 z_air = z_air(:,:,:,nps:37); Tm_in = Tm_in(:,:,:,nps:end);
 
 % Assume hydrostatic balance in the atmosphere
-z_38(z_38>z_37) = z_37 - 287.05 * Ts(z_38>z_37) * log(1.01235);
+z_38(z_38>z_37) = z_37(z_38>z_37) - 287.05 * Ts(z_38>z_37) * log(1.01235);
 
 if     np == 37, z = z_air(:);
 elseif np == 38, z = [ z_air(:) ; z_38(:) ];
