@@ -4,8 +4,8 @@ function root = era_root (indir)
 
 if nargin == 1, root.base = [ indir '/reanalysis' ]; 
 elseif nargin == 0
-    if exist('/Volumes/CliNat/','dir') == 7
-          root.base = '/Volumes/CliNat/reanalysis/';
+    if exist('/Volumes/CliNat-ERA/','dir') == 7
+          root.base = '/Volumes/CliNat-ERA/';
     elseif exist('/home/nwong002/reanalysis','dir') == 7
           root.base = '/home/nwong002/reanalysis/';
     else, root.base = '~/Documents/reanalysis/';
